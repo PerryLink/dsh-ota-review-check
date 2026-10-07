@@ -1,0 +1,43 @@
+import { describeTablePlugin } from './table-plugin-suite.ts'
+import { Config } from '../src/config.ts'
+import { parseMaterial, runCheck, SPEC } from '../src/model.ts'
+import { buildView } from '../src/view.ts'
+import { inject, name, resolvePackageFile, TOOL_NAME } from '../src/index.ts'
+
+describeTablePlugin({
+  name,
+  inject,
+  TOOL_NAME,
+  resolvePackageFile,
+  Config,
+  rulesFile: 'rules/ota-review-check.yaml',
+  parseMaterial,
+  runCheck,
+  buildView,
+  columnNames: SPEC.columns,
+  samples: {
+    good: {
+          "hotel": "某某门店",
+          "period": "2026 年 3 月",
+          "platform": "某某平台",
+          "rows": [
+                {
+                      "序号": "1",
+                      "渠道": "某某平台",
+                      "房型": "标准大床房",
+                      "入住日期": "2026-03-01",
+                      "总分": "4.5",
+                      "评分制": "5 分制",
+                      "点评内容": "位置方便，前台服务热情，房间隔音一般。",
+                      "是否回复": "是",
+                      "回复日期": "2026-03-02",
+                      "回复期限": "2026-03-04",
+                      "回复人": "张店长",
+                      "问题类型": "噪音",
+                      "是否整改": "是"
+                }
+          ]
+    },
+    unknownColumn: { rows: [{ 备注: '甲' }] },
+  },
+})

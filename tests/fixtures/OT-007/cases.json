@@ -1,0 +1,21 @@
+{
+  "ruleId": "OT-007",
+  "pairs": [
+    {
+      "name": "expected-state",
+      "material": "OT-007-compliant.json",
+      "expect": {
+        "ruleId": "OT-007",
+        "count": 0
+      }
+    },
+    {
+      "name": "difference-present",
+      "material": "OT-007-unsafe.json",
+      "expect": {
+        "ruleId": "OT-007",
+        "count": 1
+      }
+    }
+  ]
+}

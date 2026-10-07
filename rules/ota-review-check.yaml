@@ -1,0 +1,200 @@
+# 在线点评回复台账核对 规则库
+#
+# 规则数据与代码分离：替换本文件即可切换规则集版本，无需改动 TypeScript。
+#
+# 条款引用纪律（由 shared/ruleset.ts 强制校验）：
+#   - 每条规则必须写全 document / number / clause / excerpt / kind / source，
+#     且 excerpt 必须是逐字摘录，不得改写。
+#   - kind: direct                       条款直接规定了所检查的要求
+#   - kind: derived-from-principle       条款未直接规定，仅能由原则性条款推论（severity 最多 warn）
+#   - kind: institutional-configuration 阈值出自本机构配置（severity 最多 info）
+#
+# ⚠️⚠️ 本规则库的诚实说明：**excerpt 一律不是引文。**
+#   本插件核对的是"在线点评（OTA）回复台账"的**齐备与闭环**：
+#     点评内容与评分是否填写、未回复的是否仍在时限内、已回复的是否记录回复人与回复日期、
+#     问题类型是否在册、差评是否记录整改情况、点评编号是否重复、是否残留模板占位符。
+#   其规范载体是**《中华人民共和国电子商务法》**（已逐字核对，见 rules/evidence/clause-verification.md）
+#   与各**在线旅游平台的服务规则**（回复时限、评分口径、评价管理规则）。
+#   ⚠️⚠️ **核查更正了一条重要事实**：该法**第三十九条的义务主体是"电子商务平台经营者"**
+#   （原文：「电子商务平台经营者应当建立健全信用评价制度，公示信用评价规则，为消费者提供对平台内销售的
+#   商品或者提供的服务进行评价的途径。」「电子商务平台经营者**不得删除**消费者对其平台内销售的商品或者
+#   提供的服务的评价。」）——**法律里没有"平台内经营者（商家）应当回复点评"的规定**。
+#   ⇒ 因此本插件核对的对象（商家是否回复、回复是否及时）**属于平台服务规则与本机构管理口径层面，
+#   不是法律义务**；规则库与 README 都不把"回复点评"说成法律要求。
+#   该法**第十七条**禁止"编造用户评价"作虚假宣传、**第二十条**要求按承诺交付 ——
+#   这两条与"回复"无关，本插件**不引用**（引用会张冠李戴）。
+#   **各平台服务规则本次未取得逐字条文**，故每条 excerpt 如实写明，kind 降为 derived-from-principle（封顶 warn）。
+#
+# ⚠️⚠️ 另一条**必须保留**的边界：**本插件绝不判定回复是否恰当、
+#   点评是否应当申诉删除、差评是否属于恶意评价、门店服务质量是否合格**。
+#   那需要结合平台规则与实际情况判断，是运营与法务的决定。
+#   → **回复时限（replyWindowDays）与评分制（scoreScales）、问题类型（categories）
+#     都出厂为空或未配置**：回复时限完全取决于平台规则，本插件**不内置任何平台的时限**。
+#   → 本插件也**不判断点评内容的情感倾向**：它只核对"低分是否记录了整改"，
+#     "低分"的判定标准由使用方配置。
+
+plugin: dsh-ota-review-check
+version: "2026.1"
+
+rules:
+  - id: OT-001
+    title: 每条点评都应记录内容与评分
+    severity: warn
+    basis:
+      document: 《中华人民共和国电子商务法》与平台服务规则
+      number: 现行版本与条号本次未核实
+      clause: 关于平台内经营者评价处理的条款（经核查，该法第三十九条的义务主体为平台经营者，商家回复义务出自平台规则，本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.cac.gov.cn/2018-09/01/c_1123362506.htm
+    params:
+        check:
+          kind: presenceAny
+          fields: ["content","score"]
+          fix: 补填点评内容与评分；本条只核对是否记录，不判断点评内容是否属实
+    note: >-
+      回复台账若无点评内容或评分，"回复了什么"就无从追溯，也无法按评分分层处理。
+      本次未取得明文条号，故封顶 warn。
+      本条只核对"至少填了一个"，**不判断点评内容是否属实、是否属于恶意评价**。
+
+  - id: OT-002
+    title: 已回复的点评应记录回复日期
+    severity: info
+    basis:
+      document: 《中华人民共和国电子商务法》
+      number: 现行版本与条号本次未核实
+      clause: ⚠️ 本条依据为本机构点评回复管理口径（本机构配置）——《电子商务法》未规定"回复日期"这一记录要求。相关条文见第三十九条（平台经营者应当为消费者提供对平台内销售的商品或者提供的服务进行评价的途径），本条不引用该条
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: institutional-configuration
+      source: https://www.gov.cn/
+    params:
+        check:
+          kind: conditionalPresence
+          conditionField: replyStatus
+          requiredFields: ["repliedAt"]
+          conditionValues: ["是","Y","yes","true","已回复","√"]
+    note: >-
+      ⚠️ **`kind` 已于 2026-10-07 由 `derived-from-principle` 更正为 `institutional-configuration`**，
+      **`severity` 随之由 `warn` 降为 `info`** —— 判据是 `_shared/src/ruleset.ts` 的定义：
+      `derived-from-principle` 要求"**仅能由原则性条款推论**"，
+      而**《电子商务法》通篇没有"回复日期"这一记录要求**，
+      ⇒ 它是**本机构为了使回复可按时限考核而设的台账要求**，属本机构配置。
+      ⚠️ **降级不是弱化而是如实**：把它留在 `warn` 会赋予所引法律条文并不承载的分量。
+      标了"已回复"却不记回复日期，就无法判断是否在平台时限内完成，
+      也无法在申诉或考核时举证。本次未取得明文条号，故封顶 warn。
+      判定"已回复"的取值由 conditionValues 配置。本条只核对日期栏是否填写，
+      **不判断回复是否及时、是否恰当**。
+
+  - id: OT-003
+    title: 未回复的点评应在配置的时限内
+    severity: info
+    basis:
+      document: 各在线旅游平台服务规则（本机构配置）
+      number: 无统一标准（本条依据为本机构配置的回复时限）
+      clause: 关于评价回复时限的条款（本次未取得条号）
+      excerpt: 本条依据为本机构配置的口径，不存在可引用的标准条文；本规则库不伪造引文。
+      kind: institutional-configuration
+      source: https://www.gov.cn/
+    params:
+        check:
+          kind: date
+          field: checkIn
+          notAfterField: replyDeadline
+    note: >-
+      本条只在台账**已经写明回复期限**（replyDeadline）时，核对点评日期是否落在其中
+      （即期限尚未届满而仍未回复的那种情况由人工看台账即可）。
+      依据说明：**回复时限完全取决于平台规则**（有的要求 24 小时、有的 48 小时、
+      有的按工作日、有的无强制时限），本插件**不内置任何平台的时限**。
+      replyDeadline 为空时本条进 skipped，**不会假定任何天数**。
+      本条命中只表示"台账里的期限与点评日期对不上"，**不表示已经违反平台规则**。
+
+  - id: OT-004
+    title: 回复日期不应早于点评日期
+    severity: info
+    basis:
+      document: 《中华人民共和国电子商务法》
+      number: 现行版本与条号本次未核实
+      clause: ⚠️ 本条依据为点评与回复的先后逻辑（本机构配置）——《电子商务法》未规定回复与点评的时间先后。相关条文见第三十九条，本条不引用该条
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: institutional-configuration
+      source: https://www.gov.cn/
+    params:
+        check:
+          kind: date
+          field: checkIn
+          notAfterField: repliedAt
+          fix: 回复日期不应早于点评日期；核对两个日期的填写
+    note: >-
+      ⚠️ **`kind` 已于 2026-10-07 由 `derived-from-principle` 更正为 `institutional-configuration`**，
+      **`severity` 由 `warn` 降为 `info`**：
+      **"先点评、后回复"是流程的时间前提，不是法律原则的推论** ——
+      **《电子商务法》未规定这一先后关系**。⇒ 属本机构配置。
+      "先点评、后回复"是流程的**时间前提**；日期可解析是台账能被程序处理的前提。
+      本次未取得明文条号，故封顶 warn。
+      本条只比较两个日期（同一天视为不晚于），**不判断回复是否及时**。
+      日期无法解析时会单独报出，**不会静默跳过**。
+
+  - id: OT-005
+    title: 已回复的点评应记录回复人
+    severity: info
+    basis:
+      document: 《中华人民共和国电子商务法》
+      number: 现行版本与条号本次未核实
+      clause: ⚠️ 本条依据为本机构点评回复责任分工（本机构配置）——《电子商务法》未规定"回复人"这一记录要求。相关条文见第三十九条，本条不引用该条
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: institutional-configuration
+      source: https://www.gov.cn/
+    params:
+        check:
+          kind: presence
+          field: replier
+          fix: 补填回复人；本条只核对是否记录，不判断回复是否恰当
+    note: >-
+      ⚠️ **`kind` 已于 2026-10-07 由 `derived-from-principle` 更正为 `institutional-configuration`**，
+      **`severity` 由 `warn` 降为 `info`**：
+      **《电子商务法》通篇没有"回复人"这一记录要求** ——
+      "回复人决定责任落点"是**本机构的责任管理需要**，不是所引条文的推论。
+      回复人决定了责任落点：出现不当回复时，要能追到具体处理人。
+      本次未取得明文条号，故封顶 warn。
+      本条只核对回复人栏是否填写，**不判断该回复是否恰当、是否符合平台规则**。
+
+  - id: OT-006
+    title: 问题类型应使用本机构口径的取值
+    severity: info
+    basis:
+      document: 本机构点评管理办法（本机构配置）
+      number: 无统一标准（本条依据为本机构分类口径）
+      clause: 关于点评问题分类的条款（本次未取得条号）
+      excerpt: 本条依据为本机构配置的口径，不存在可引用的标准条文；本规则库不伪造引文。
+      kind: institutional-configuration
+      source: https://www.gov.cn/
+    params:
+        check:
+          kind: enum
+          field: issueType
+          values: []
+    note: >-
+      values 出厂为空，表示**未配置**，本条进 skipped。
+      依据说明：问题的分类口径（例如「卫生」「服务态度」「设施设备」「价格」「噪音」、
+      「预订与入住」）随**本机构运营管理口径**变化，本插件**不硬编码任何分类体系**。
+      本条只核对所填值是否在册，**不判断该点评应归入哪一类**——归类是运营人员的判断。
+
+  - id: OT-007
+    title: 点评编号不应在台账内重复
+    severity: warn
+    basis:
+      document: 《中华人民共和国电子商务法》
+      number: 现行版本与条号本次未核实
+      clause: 关于评价管理的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.gov.cn/
+    params:
+        check:
+          kind: unique
+          field: reviewNo
+    note: >-
+      点评编号唯一是"每条点评只被登记一次"的**前提条件**：编号重复会让人无法准确指认待回复的点评，
+      回复率统计也会失真。本次未取得明文条号，故封顶 warn。比较时忽略空白字符。
+
+disabled: []

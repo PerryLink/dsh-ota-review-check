@@ -1,0 +1,33 @@
+{
+  "ruleId": "OT-006",
+  "configure": {
+    "OT-006": {
+      "values": [
+        "卫生",
+        "服务态度",
+        "设施设备",
+        "价格",
+        "噪音",
+        "预订与入住"
+      ]
+    }
+  },
+  "pairs": [
+    {
+      "name": "expected-state",
+      "material": "OT-006-compliant.json",
+      "expect": {
+        "ruleId": "OT-006",
+        "count": 0
+      }
+    },
+    {
+      "name": "difference-present",
+      "material": "OT-006-unsafe.json",
+      "expect": {
+        "ruleId": "OT-006",
+        "count": 1
+      }
+    }
+  ]
+}
