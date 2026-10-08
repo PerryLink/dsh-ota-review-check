@@ -1,4 +1,26 @@
-# dsh-ota-review-check
+# dsh-ota-review-check — Online review and reply register check
+
+`dsh-ota-review-check` reads one online review-and-reply register — the property header plus one row per review — and checks that register's own completeness and closed loop: that each review records its content or a score, that a replied review carries a reply date and a reply author, that the reply does not precede the review, that an unreplied review falls inside the deadline the register itself states, that the problem category comes from your institution's own vocabulary, and that review numbers are unique.
+
+## What it answers
+
+| You ask | What it answers |
+|---|---|
+| A row has neither 点评内容 nor 评分 filled in. What is reported? | `OT-001` reports that row: a review must record at least one of the two fields, `content` or `score`. It checks only that one of them is filled; it does not judge whether the review's content is truthful or whether the review is a malicious one. |
+| A row is marked 已回复, but the 回复日期 and 回复人 cells are blank. What is reported? | `OT-002` reports the missing `repliedAt` on any row whose `replyStatus` holds one of the configured conditions (`是`, `Y`, `yes`, `true`, `已回复`, `√`), and `OT-005` requires `replier` to be filled on every row that carries the 回复人 column, so a blank cell is reported even on a row marked 未回复. Both check only that the cell is filled: neither says whether the reply was timely or whether it was appropriate. |
+| Our register has the 回复期限 column empty throughout. Does the check assume a 24- or 48-hour window? | No. The plugin builds in no platform's reply window: with no `replyDeadline` value there is nothing to compare, and `OT-003` appears in `skipped` instead of assuming any number of days. It runs only against the deadline the register itself writes in its 回复期限 column, and a hit means that deadline and the review date disagree — not that a platform rule was breached. |
+| The 回复日期 is written as 2026年3月15日 and is earlier than the 入住日期. What is caught? | `OT-004` compares `checkIn` with `repliedAt` and reports a reply date earlier than the review date, counting the same day as not later; a date it cannot parse — `2026年3月15日`, for instance, since only `2026-03-15`, `2026/3/15` and `2026.3.15` with an optional time parse — is reported on that row rather than passed over in silence. It compares the two dates only and does not judge whether the reply was timely. |
+| We filled 问题类型 with our own words. Why does the report say the check did not run? | `OT-006` ships with its `values` list empty, meaning not configured, so it states itself in `skipped` with that reason rather than inventing a category system: the vocabulary (卫生, 服务态度, 设施设备, 价格, 噪音, 预订与入住, or your own) is your institution's. Once you list it, the rule reports any value not on the list and checks nothing further — which category a review belongs in stays the operator's judgement. |
+| The same 点评编号 appears twice in the register. What is reported? | `OT-007` reports the second row as a duplicate of the first, comparing `reviewNo` while ignoring whitespace. Uniqueness is the premise of each review being registered once, which is why the rule sits at `warn`; it checks uniqueness only and does not say which of the two rows is the copy. With no `reviewNo` column the rule states itself in `skipped` rather than passing in silence. |
+
+## Standards it follows
+
+| Document | Number | Cited by rules |
+|---|---|---|
+| 《中华人民共和国电子商务法》与平台服务规则 | 现行版本与条号本次未核实 | OT-001 |
+| 《中华人民共和国电子商务法》 | 现行版本与条号本次未核实 | OT-002, OT-004, OT-005, OT-007 |
+| 各在线旅游平台服务规则（本机构配置） | 无统一标准（本条依据为本机构配置的回复时限） | OT-003 |
+| 本机构点评管理办法（本机构配置） | 无统一标准（本条依据为本机构分类口径） | OT-006 |
 
 **Boundary:** this plugin checks an **在线点评回复台账** for the closed loop a register can be held to — that
 each review records its content or score, that a reply carries a date and a reply author, that the reply does

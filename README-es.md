@@ -1,4 +1,26 @@
-# dsh-ota-review-check
+# dsh-ota-review-check — Verificación del registro de respuestas a reseñas en línea
+
+`dsh-ota-review-check` lee un registro de reseñas en línea con sus respuestas —la cabecera del establecimiento más una fila por reseña— y comprueba la completitud y el cierre de ese mismo registro: que cada reseña registre su contenido o una puntuación, que una reseña respondida lleve fecha de respuesta y autor de la respuesta, que la respuesta no sea anterior a la reseña, que una reseña sin responder quede dentro del plazo que el propio registro declara, que el tipo de problema proceda del vocabulario de su institución y que los números de reseña sean únicos.
+
+## Qué responde
+
+| Usted pregunta | Qué responde |
+|---|---|
+| Una fila no tiene rellenos ni 点评内容 ni 评分. ¿Qué se informa? | `OT-001` informa de esa fila: cada reseña debe registrar al menos uno de los dos campos, `content` o `score`. Solo comprueba que uno de ellos esté relleno; no juzga si el contenido de la reseña es cierto ni si se trata de una reseña maliciosa. |
+| Una fila está marcada 已回复, pero las celdas 回复日期 y 回复人 están vacías. ¿Qué se informa? | `OT-002` informa de la falta de `repliedAt` en toda fila cuyo `replyStatus` tome uno de los valores configurados (`是`, `Y`, `yes`, `true`, `已回复`, `√`), y `OT-005` exige que `replier` esté relleno en cualquier fila que traiga la columna 回复人, de modo que una celda vacía se informa incluso en una fila marcada 未回复. Ambas comprueban solo que la celda esté rellena: ninguna dice si la respuesta fue puntual ni si fue adecuada. |
+| En nuestro registro la columna 回复期限 está vacía en todas las filas. ¿La comprobación supone un plazo de 24 o 48 horas? | No. El plugin no incorpora el plazo de ninguna plataforma: sin un valor en `replyDeadline` no hay nada que comparar y `OT-003` aparece en `skipped` en lugar de suponer un número de días. Solo se ejecuta contra el plazo que el propio registro escribe en la columna 回复期限, y una coincidencia significa que ese plazo y la fecha de la reseña no concuerdan, no que se haya infringido una regla de la plataforma. |
+| La 回复日期 está escrita como 2026年3月15日 y es anterior a la 入住日期. ¿Qué se detecta? | `OT-004` compara `checkIn` con `repliedAt` e informa de una fecha de respuesta anterior a la fecha de la reseña, considerando el mismo día como no posterior; una fecha que no puede analizar —`2026年3月15日`, por ejemplo, ya que solo se analizan `2026-03-15`, `2026/3/15` y `2026.3.15` con hora opcional— se informa en esa fila en lugar de omitirse en silencio. Solo compara las dos fechas y no juzga si la respuesta fue puntual. |
+| Hemos rellenado 问题类型 con nuestras propias palabras. ¿Por qué dice el informe que la comprobación no se ejecutó? | `OT-006` trae su lista `values` vacía, es decir, sin configurar, así que se declara en `skipped` con ese motivo en lugar de inventar un sistema de categorías: el vocabulario (卫生, 服务态度, 设施设备, 价格, 噪音, 预订与入住 o el suyo propio) lo fija su institución. Una vez lo configure, la regla informa de cualquier valor que no esté en la lista y no comprueba nada más: en qué categoría encaja una reseña sigue siendo juicio del operador. |
+| El mismo 点评编号 aparece dos veces en el registro. ¿Qué se informa? | `OT-007` informa de la segunda fila como duplicada de la primera, comparando `reviewNo` e ignorando los espacios en blanco. La unicidad es la premisa de que cada reseña se registre una sola vez, por eso la regla está en `warn`; comprueba solo la unicidad y no dice cuál de las dos filas es la copia. Sin columna `reviewNo`, la regla se declara en `skipped` en lugar de pasar en silencio. |
+
+## Normas que sigue
+
+| Documento | Número | Reglas que lo citan |
+|---|---|---|
+| 《中华人民共和国电子商务法》与平台服务规则 | 现行版本与条号本次未核实 | OT-001 |
+| 《中华人民共和国电子商务法》 | 现行版本与条号本次未核实 | OT-002, OT-004, OT-005, OT-007 |
+| 各在线旅游平台服务规则（本机构配置） | 无统一标准（本条依据为本机构配置的回复时限） | OT-003 |
+| 本机构点评管理办法（本机构配置） | 无统一标准（本条依据为本机构分类口径） | OT-006 |
 
 **Boundary:** this plugin checks an **在线点评回复台账** for the closed loop a register can be held to — that
 each review records its content or score, that a reply carries a date and a reply author, that the reply does

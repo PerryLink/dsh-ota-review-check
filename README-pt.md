@@ -1,4 +1,26 @@
-# dsh-ota-review-check
+# dsh-ota-review-check — Verificação do registo de respostas a avaliações em linha
+
+`dsh-ota-review-check` lê um registo de avaliações em linha com as respetivas respostas —o cabeçalho do estabelecimento mais uma linha por avaliação— e verifica a completude e o fecho desse próprio registo: se cada avaliação regista o seu conteúdo ou uma pontuação, se uma avaliação respondida traz data de resposta e autor da resposta, se a resposta não é anterior à avaliação, se uma avaliação sem resposta cai dentro do prazo que o próprio registo declara, se o tipo de problema vem do vocabulário da sua instituição e se os números de avaliação são únicos.
+
+## O que ele responde
+
+| Você pergunta | O que ele responde |
+|---|---|
+| Uma linha não tem preenchidos nem 点评内容 nem 评分. O que é reportado? | `OT-001` reporta essa linha: cada avaliação tem de registar pelo menos um dos dois campos, `content` ou `score`. Verifica apenas que um deles está preenchido; não julga se o conteúdo da avaliação é verdadeiro nem se se trata de uma avaliação maliciosa. |
+| Uma linha está marcada 已回复, mas as células 回复日期 e 回复人 estão vazias. O que é reportado? | `OT-002` reporta a falta de `repliedAt` em qualquer linha cujo `replyStatus` tenha um dos valores configurados (`是`, `Y`, `yes`, `true`, `已回复`, `√`), e `OT-005` exige que `replier` esteja preenchido em qualquer linha que traga a coluna 回复人, pelo que uma célula vazia é reportada mesmo numa linha marcada 未回复. Ambas verificam apenas que a célula está preenchida: nenhuma diz se a resposta foi atempada ou adequada. |
+| No nosso registo a coluna 回复期限 está vazia em todas as linhas. A verificação assume um prazo de 24 ou 48 horas? | Não. O plugin não incorpora o prazo de nenhuma plataforma: sem um valor em `replyDeadline` não há nada a comparar e `OT-003` aparece em `skipped` em vez de presumir um número de dias. Só corre contra o prazo que o próprio registo escreve na coluna 回复期限, e uma ocorrência significa que esse prazo e a data da avaliação não concordam, não que uma regra da plataforma tenha sido violada. |
+| A 回复日期 está escrita como 2026年3月15日 e é anterior à 入住日期. O que é detetado? | `OT-004` compara `checkIn` com `repliedAt` e reporta uma data de resposta anterior à data da avaliação, considerando o mesmo dia como não posterior; uma data que não consegue analisar —`2026年3月15日`, por exemplo, pois só são analisadas `2026-03-15`, `2026/3/15` e `2026.3.15` com hora opcional— é reportada nessa linha em vez de ser omitida em silêncio. Compara apenas as duas datas e não julga se a resposta foi atempada. |
+| Preenchemos 问题类型 com palavras nossas. Porque diz o relatório que a verificação não correu? | `OT-006` traz a lista `values` vazia, ou seja, por configurar, pelo que se declara em `skipped` com esse motivo em vez de inventar um sistema de categorias: o vocabulário (卫生, 服务态度, 设施设备, 价格, 噪音, 预订与入住 ou o da sua instituição) é definido pela instituição. Depois de o configurar, a regra reporta qualquer valor fora da lista e não verifica mais nada: em que categoria se enquadra uma avaliação continua a ser um juízo do operador. |
+| O mesmo 点评编号 aparece duas vezes no registo. O que é reportado? | `OT-007` reporta a segunda linha como duplicada da primeira, comparando `reviewNo` e ignorando espaços em branco. A unicidade é a premissa de que cada avaliação seja registada uma só vez, por isso a regra está em `warn`; verifica apenas a unicidade e não diz qual das duas linhas é a cópia. Sem coluna `reviewNo`, a regra declara-se em `skipped` em vez de passar em silêncio. |
+
+## Normas que segue
+
+| Documento | Número | Regras que o citam |
+|---|---|---|
+| 《中华人民共和国电子商务法》与平台服务规则 | 现行版本与条号本次未核实 | OT-001 |
+| 《中华人民共和国电子商务法》 | 现行版本与条号本次未核实 | OT-002, OT-004, OT-005, OT-007 |
+| 各在线旅游平台服务规则（本机构配置） | 无统一标准（本条依据为本机构配置的回复时限） | OT-003 |
+| 本机构点评管理办法（本机构配置） | 无统一标准（本条依据为本机构分类口径） | OT-006 |
 
 **Boundary:** this plugin checks an **在线点评回复台账** for the closed loop a register can be held to — that
 each review records its content or score, that a reply carries a date and a reply author, that the reply does
