@@ -59,8 +59,7 @@ per review — applies a versioned rule pack, and returns a report.
 ## Install
 
 ```sh
-pnpm pack
-dsh plugin --profile <name> add ./dsh-ota-review-check-0.1.0.tgz
+dsh plugin --profile <name> add dsh-ota-review-check
 dsh --profile <name> --dump-config | grep 'dsh-ota-review-check'
 ```
 

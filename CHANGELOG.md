@@ -2,4 +2,9 @@
 
 ## 0.1.0
 
-- Initial release — 在线点评回复台账核对（按回复时限、问题分类与整改状态核对台账闭环，仅提示差异，不作出定性结论）
+- Release infrastructure brought to the family standard: `verify:self-contained`,
+  `check:lockfile` and `check:readmes` gates, a `prepublishOnly` that re-runs the whole chain,
+  SECURITY.md, dependabot, and the OpenSSF Scorecard workflow.
+- The README install command now names the published package instead of a local tarball.
+- Rule pack: 7 rules across OT-001..OT-007.
+- Licensed Apache-2.0.

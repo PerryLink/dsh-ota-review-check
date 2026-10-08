@@ -48,8 +48,7 @@ whether service quality is acceptable.
 ## Install
 
 ```sh
-pnpm pack
-dsh plugin --profile <name> add ./*.tgz
+dsh plugin --profile <name> add dsh-ota-review-check
 dsh --profile <name> --dump-config | grep 'dsh-ota-review-check'
 ```
 
