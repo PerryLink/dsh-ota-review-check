@@ -71,13 +71,12 @@ per review — applies a versioned rule pack, and returns a report.
 | Rule | Check | Severity | Basis kind |
 |---|---|---|---|
 | `OT-001` | the review records content or a score | warn | principle |
-| `OT-002` | a replied review carries a reply date | warn | principle |
+| `OT-002` | a replied review carries a reply date | info | local |
 | `OT-003` | an unreplied review falls inside the recorded deadline | info | local |
-| `OT-004` | the reply does not precede the review | warn | principle |
-| `OT-005` | a replied review names the replier | warn | principle |
+| `OT-004` | the reply does not precede the review | info | local |
+| `OT-005` | a replied review names the replier | info | local |
 | `OT-006` | the problem category comes from your vocabulary (off by default) | info | local |
 | `OT-007` | review numbers are unique | warn | principle |
-
 ## Install
 
 ```sh
