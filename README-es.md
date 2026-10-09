@@ -1,6 +1,14 @@
 # dsh-ota-review-check — Verificación del registro de respuestas a reseñas en línea
 
+[![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
+
 `dsh-ota-review-check` lee un registro de reseñas en línea con sus respuestas —la cabecera del establecimiento más una fila por reseña— y comprueba la completitud y el cierre de ese mismo registro: que cada reseña registre su contenido o una puntuación, que una reseña respondida lleve fecha de respuesta y autor de la respuesta, que la respuesta no sea anterior a la reseña, que una reseña sin responder quede dentro del plazo que el propio registro declara, que el tipo de problema proceda del vocabulario de su institución y que los números de reseña sean únicos.
+
+## Cómo se ve la salida
+
+![Terminal demo of dsh-ota-review-check: real output over its OT-001 fixture](https://raw.githubusercontent.com/PerryLink/dsh-ota-review-check/main/docs/assets/dsh-ota-review-check-demo.png)
+
+Salida real de este plugin sobre su propio fixture de prueba `OT-001` — no es un montaje. El paquete de reglas no inventa citas, así que cada hallazgo nombra la cláusula aplicada y advierte que su texto no se obtuvo.
 
 ## Qué responde
 
