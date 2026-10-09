@@ -1,6 +1,6 @@
 {
   "name": "dsh-ota-review-check",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "在线点评回复台账核对（按回复时限、问题分类与整改状态核对台账闭环，仅提示差异，不作出定性结论）",
   "type": "module",
   "main": "lib/index.mjs",
