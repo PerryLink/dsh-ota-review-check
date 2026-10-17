@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.7] - 2026-10-18
+
+### Changed
+
+- Add a 1280×720 hero and a 960×540, 4-second terminal GIF rendered from the checker’s own output; `screenshots.json` is an object array and `capture.json` records the storyboard.
+
 ## 0.2.6 - 2026-10-18
 
 - Fix: a rule that executed and found no difference is no longer placed in `skipped`. The report view labels only genuinely unexecuted rules as “未执行的检查”; `skippedCount` no longer counts executed-clean rules.

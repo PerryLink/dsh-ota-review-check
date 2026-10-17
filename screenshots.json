@@ -1,0 +1,14 @@
+[
+  {
+    "path": "docs/assets/dsh-ota-review-check-hero.png",
+    "kind": "hero",
+    "alt": "dsh-ota-review-check terminal output",
+    "caption": "Real dsh-ota-review-check checker output; 31 tests passed."
+  },
+  {
+    "path": "docs/assets/dsh-ota-review-check-demo.gif",
+    "kind": "demo",
+    "alt": "Animated dsh-ota-review-check terminal session",
+    "caption": "The same run, assembled line by line."
+  }
+]
