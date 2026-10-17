@@ -4,6 +4,13 @@
 
 `dsh-ota-review-check` lee un registro de reseñas en línea con sus respuestas —la cabecera del establecimiento más una fila por reseña— y comprueba la completitud y el cierre de ese mismo registro: que cada reseña registre su contenido o una puntuación, que una reseña respondida lleve fecha de respuesta y autor de la respuesta, que la respuesta no sea anterior a la reseña, que una reseña sin responder quede dentro del plazo que el propio registro declara, que el tipo de problema proceda del vocabulario de su institución y que los números de reseña sean únicos.
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-ota-review-check
+dsh --profile <name> --dump-config | grep 'dsh-ota-review-check'
+```
+
 ## Cómo se ve la salida
 
 ![Terminal demo of dsh-ota-review-check: real output over its OT-001 fixture](https://raw.githubusercontent.com/PerryLink/dsh-ota-review-check/main/docs/assets/dsh-ota-review-check-hero.png)
@@ -76,13 +83,6 @@ whether service quality is acceptable.
 ## What it does
 
 La tabla de reglas, los campos y el comportamiento detallado están en [README.md](README.md#what-it-does) (versión principal en inglés). El plugin sólo enumera divergencias literales frente a las cláusulas citadas e indica en `skipped` cada comprobación que no pudo ejecutarse.
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-ota-review-check
-dsh --profile <name> --dump-config | grep 'dsh-ota-review-check'
-```
 
 ## Configuration
 

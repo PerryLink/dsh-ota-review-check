@@ -4,6 +4,13 @@
 
 `dsh-ota-review-check` reads one online review-and-reply register — the property header plus one row per review — and checks that register's own completeness and closed loop: that each review records its content or a score, that a replied review carries a reply date and a reply author, that the reply does not precede the review, that an unreplied review falls inside the deadline the register itself states, that the problem category comes from your institution's own vocabulary, and that review numbers are unique.
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-ota-review-check
+dsh --profile <name> --dump-config | grep 'dsh-ota-review-check'
+```
+
 ## What it looks like
 
 ![Terminal demo of dsh-ota-review-check: real output over its OT-001 fixture](https://raw.githubusercontent.com/PerryLink/dsh-ota-review-check/main/docs/assets/dsh-ota-review-check-hero.png)
@@ -87,13 +94,6 @@ per review — applies a versioned rule pack, and returns a report.
 | `OT-005` | a replied review names the replier | info | local |
 | `OT-006` | the problem category comes from your vocabulary (off by default) | info | local |
 | `OT-007` | review numbers are unique | warn | principle |
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-ota-review-check
-dsh --profile <name> --dump-config | grep 'dsh-ota-review-check'
-```
-
 ## Configuration
 
 | Key | Type | Default | Description |

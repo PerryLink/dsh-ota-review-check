@@ -4,6 +4,13 @@
 
 `dsh-ota-review-check` ऑनलाइन समीक्षा और उत्तर का एक रजिस्टर पढ़ता है — प्रॉपर्टी हेडर और प्रत्येक समीक्षा की एक पंक्ति — और उसी रजिस्टर की पूर्णता तथा बंद-लूप (closed loop) की जाँच करता है: क्या प्रत्येक समीक्षा में उसका विवरण या स्कोर दर्ज है, क्या उत्तर दी गई समीक्षा में उत्तर की तिथि और उत्तर देने वाले का नाम दर्ज है, क्या उत्तर समीक्षा से पहले नहीं है, क्या बिना उत्तर वाली समीक्षा रजिस्टर में लिखी समय-सीमा के भीतर है, क्या समस्या-प्रकार आपकी संस्था की अपनी शब्दावली से लिया गया है, और क्या समीक्षा क्रमांक अद्वितीय हैं।
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-ota-review-check
+dsh --profile <name> --dump-config | grep 'dsh-ota-review-check'
+```
+
 ## आउटपुट कैसा दिखता है
 
 ![Terminal demo of dsh-ota-review-check: real output over its OT-001 fixture](https://raw.githubusercontent.com/PerryLink/dsh-ota-review-check/main/docs/assets/dsh-ota-review-check-hero.png)
@@ -76,13 +83,6 @@ whether service quality is acceptable.
 ## What it does
 
 नियम-सूची, फ़ील्ड और विस्तृत व्यवहार [README.md](README.md#what-it-does) (अंग्रेज़ी मुख्य संस्करण) में हैं। यह प्लगइन केवल उद्धृत धाराओं के सामने शाब्दिक अंतर सूचीबद्ध करता है और हर न चल पाई जाँच को `skipped` में बताता है।
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-ota-review-check
-dsh --profile <name> --dump-config | grep 'dsh-ota-review-check'
-```
 
 ## Configuration
 

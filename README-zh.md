@@ -4,6 +4,13 @@
 
 `dsh-ota-review-check` 读取一份在线点评回复台账——门店表头加每条点评一行——核对这份台账自身的齐备与闭环：每条点评是否记录了内容或评分、已回复的点评是否记录了回复日期与回复人、回复是否早于点评、未回复的点评是否落在台账自己写明的回复期限之内、问题类型是否取自本机构自己的分类口径、点评编号是否唯一。
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-ota-review-check
+dsh --profile <name> --dump-config | grep 'dsh-ota-review-check'
+```
+
 ## 实际输出长什么样
 
 ![Terminal demo of dsh-ota-review-check: real output over its OT-001 fixture](https://raw.githubusercontent.com/PerryLink/dsh-ota-review-check/main/docs/assets/dsh-ota-review-check-hero.png)
@@ -76,13 +83,6 @@ whether service quality is acceptable.
 ## What it does
 
 规则表、字段说明与行为细节见 [README.md](README.md#what-it-does)（英文主版本）。本插件只列出材料与所引条款之间的字面差异，并对无法执行的检查在 `skipped` 中逐项说明。
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-ota-review-check
-dsh --profile <name> --dump-config | grep 'dsh-ota-review-check'
-```
 
 ## Configuration
 
