@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.8] - 2026-10-18
+
+### Fixed
+
+- **OT-003’s title and README row no longer claim a reply-status condition the check does not have.** The check compares the review date with the recorded reply deadline on every row; the copy now says that. `OT-002/004/005` notes now say `info` instead of the stale “封顶 warn”.
+
 ## [0.2.7] - 2026-10-18
 
 ### Changed
