@@ -43,30 +43,18 @@ dsh --profile <name> --dump-config | grep 'dsh-ota-review-check'
 
 **边界（中文译文，以英文原文为准）：** 本插件核对一份 **在线点评回复台账** 在台账层面可以要求到的闭环——每条点评是否记录了内容或评分，回复是否带有日期与回复人，回复是否不早于点评，未回复的点评是否落在台账写明的回复期限之内，问题类型是否取自你的取值口径，以及点评编号是否唯一。它**不**判定回复是否恰当、点评是否应当申诉或删除、差评是否恶意，或服务质量是否可以接受。
 
-> ### ⚠️ What the law does — and does not — require here
+> ### ⚠️ 法律在此要求什么——以及不要求什么（以英文原文为准）
 >
-> **《中华人民共和国电子商务法》was obtained and read verbatim** (see
-> `rules/evidence/clause-verification.md`), and the check **overturned this pack's earlier framing**. Article 39
-> puts the duty on the **platform operator**, not the merchant:
+> **《中华人民共和国电子商务法》已取得并逐字阅读**（见 `rules/evidence/clause-verification.md`），而这项核对**推翻了本规则库早先的表述框架**。第三十九条把义务加在**平台经营者**身上，而不是商家身上：
 >
 > > 电子商务平台经营者应当建立健全信用评价制度，公示信用评价规则，为消费者提供对平台内销售的商品或者提供的服务进行评价的途径。
 > > 电子商务平台经营者**不得删除**消费者对其平台内销售的商品或者提供的服务的评价。
 >
-> **There is no provision requiring a merchant to reply to a review.** So this plugin checks a duty that comes
-> from **each platform's own service rules and your institution's management policy** — never from the statute —
-> and neither the rule pack nor this README now describes replying as a legal obligation. Articles 17 (no
-> fabricated reviews) and 20 (deliver as promised) concern other things and are deliberately **not** cited.
+> **没有任何条款要求商家回复评价。** 因此，本插件核对的是一项来自**各平台自身的服务规则和你所在机构的管理政策**的义务——绝不是来自法律——现在规则库和本 README 都不再把回复描述为法律义务。第十七条（不得虚构评价）和第二十条（按承诺交付）涉及的是其他事项，因此刻意**不予**引用。
 >
-> **Every `excerpt` still says "本次未取得", and every rule remains `warn` or `info`** — the platform service
-> rules themselves were not obtained, and the statute governs the platform rather than the merchant, so raising
-> a rule to `direct` would dress a register gap up as a breach of law.
+> **每一条 `excerpt` 仍然写着「本次未取得」，每条规则也仍然保持在 `warn` 或 `info`**——平台服务规则本身并未取得，而该法规范的是平台而非商家，因此把某条规则提升为 `direct`，只会把台账的缺口包装成违法。
 >
-> **The plugin builds in no platform's reply window.** `OT-003` compares the review date against the deadline
-> **written in the register's own 回复期限 column**, and with that column empty it reports itself in `skipped`.
-> A finding says "the deadline and the review date disagree", never "you breached the platform's rules".
-> The category vocabulary ships **empty** for the same reason. And the plugin **does not read sentiment**: it
-> checks that a low score has a rectification recorded, and what counts as low is your configuration, not its
-> judgement.
+> **本插件不内置任何平台的回复时限。** `OT-003` 把点评日期与**写在台账自身的 回复期限 列中的**截止日期相比，并在该列为空时把自己记入 `skipped`。一项发现说的是「截止日期与点评日期不一致」，而绝不是「你违反了平台规则」。类别词表同样因此出厂为**空**。此外，本插件**不读取情感**：它只核对低分评价是否记录了整改，而什么算低分由你的配置决定，不是它的判断。
 
 ## Compatibility
 
