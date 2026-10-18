@@ -41,12 +41,7 @@ dsh --profile <name> --dump-config | grep 'dsh-ota-review-check'
 | 各在线旅游平台服务规则（本机构配置） | 无统一标准（本条依据为本机构配置的回复时限） | OT-003 |
 | 本机构点评管理办法（本机构配置） | 无统一标准（本条依据为本机构分类口径） | OT-006 |
 
-**Boundary:** this plugin checks an **在线点评回复台账** for the closed loop a register can be held to — that
-each review records its content or score, that a reply carries a date and a reply author, that the reply does
-not precede the review, that an unreplied review falls inside the deadline the register states, that the
-problem category comes from your vocabulary, and that review numbers are unique. It does **not** decide whether
-a reply was appropriate, whether a review should be appealed or removed, whether a bad review is malicious, or
-whether service quality is acceptable.
+**边界（中文译文，以英文原文为准）：** 本插件核对一份 **在线点评回复台账** 在台账层面可以要求到的闭环——每条点评是否记录了内容或评分，回复是否带有日期与回复人，回复是否不早于点评，未回复的点评是否落在台账写明的回复期限之内，问题类型是否取自你的取值口径，以及点评编号是否唯一。它**不**判定回复是否恰当、点评是否应当申诉或删除、差评是否恶意，或服务质量是否可以接受。
 
 > ### ⚠️ What the law does — and does not — require here
 >
