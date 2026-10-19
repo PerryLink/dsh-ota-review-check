@@ -30,6 +30,34 @@ Saída real deste plugin sobre o seu próprio fixture de teste `OT-001` — não
 A tabela abaixo é o conjunto de exemplos: a primeira linha é o caso detalhado e as demais são casos curtos.
 
 
+#### Saída detalhada
+
+**Ferramenta** `ota_review_check`
+
+**Entrada**
+
+~~~json
+{"hotel":"某某门店","period":"2026 年 3 月","platform":"某某平台","rows":[{"序号":"1","渠道":"某某平台","房型":"标准大床房","入住日期":"2026-03-01","总分":"","评分制":"5 分制","点评内容":"","是否回复":"是"}]}
+~~~
+ 
+**Saída**
+
+~~~json
+{
+  "id": "dsh-ota-review-check.OT-001.de09b5a6",
+  "ruleId": "OT-001",
+  "severity": "warn",
+  "locator": {
+    "row": 1,
+    "field": "content"
+  },
+  "found": "第 1 行 content、score 都为空",
+  "expected": "content、score 至少应填写一项"
+}
+~~~
+
+*Observado em `dsh-ota-review-check/tests/fixtures/OT-001/OT-001-unsafe.json`*
+
 | Você pergunta | O que ele responde |
 |---|---|
 | Uma linha não tem preenchidos nem 点评内容 nem 评分. O que é reportado? | `OT-001` reporta essa linha: cada avaliação tem de registar pelo menos um dos dois campos, `content` ou `score`. Verifica apenas que um deles está preenchido; não julga se o conteúdo da avaliação é verdadeiro nem se se trata de uma avaliação maliciosa. |

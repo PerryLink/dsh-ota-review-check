@@ -28,6 +28,34 @@ dsh --profile <name> --dump-config | grep 'dsh-ota-review-check'
 
 The table below is the example set: the first row is the detailed walkthrough, the remaining rows are short cases.
 
+#### Detailed output
+
+**Tool** `ota_review_check`
+
+**Input**
+
+~~~json
+{"hotel":"某某门店","period":"2026 年 3 月","platform":"某某平台","rows":[{"序号":"1","渠道":"某某平台","房型":"标准大床房","入住日期":"2026-03-01","总分":"","评分制":"5 分制","点评内容":"","是否回复":"是"}]}
+~~~
+ 
+**Output**
+
+~~~json
+{
+  "id": "dsh-ota-review-check.OT-001.de09b5a6",
+  "ruleId": "OT-001",
+  "severity": "warn",
+  "locator": {
+    "row": 1,
+    "field": "content"
+  },
+  "found": "第 1 行 content、score 都为空",
+  "expected": "content、score 至少应填写一项"
+}
+~~~
+
+*Observed from `dsh-ota-review-check/tests/fixtures/OT-001/OT-001-unsafe.json`*
+
 | You ask | What it answers |
 |---|---|
 | A row has neither 点评内容 nor 评分 filled in. What is reported? | `OT-001` reports that row: a review must record at least one of the two fields, `content` or `score`. It checks only that one of them is filled; it does not judge whether the review's content is truthful or whether the review is a malicious one. |

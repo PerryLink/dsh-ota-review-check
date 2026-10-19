@@ -30,6 +30,34 @@ Salida real de este plugin sobre su propio fixture de prueba `OT-001` — no es 
 La tabla siguiente es el conjunto de ejemplos: la primera fila es el caso detallado y las demás son casos breves.
 
 
+#### Salida detallada
+
+**Herramienta** `ota_review_check`
+
+**Entrada**
+
+~~~json
+{"hotel":"某某门店","period":"2026 年 3 月","platform":"某某平台","rows":[{"序号":"1","渠道":"某某平台","房型":"标准大床房","入住日期":"2026-03-01","总分":"","评分制":"5 分制","点评内容":"","是否回复":"是"}]}
+~~~
+ 
+**Salida**
+
+~~~json
+{
+  "id": "dsh-ota-review-check.OT-001.de09b5a6",
+  "ruleId": "OT-001",
+  "severity": "warn",
+  "locator": {
+    "row": 1,
+    "field": "content"
+  },
+  "found": "第 1 行 content、score 都为空",
+  "expected": "content、score 至少应填写一项"
+}
+~~~
+
+*Observado en `dsh-ota-review-check/tests/fixtures/OT-001/OT-001-unsafe.json`*
+
 | Usted pregunta | Qué responde |
 |---|---|
 | Una fila no tiene rellenos ni 点评内容 ni 评分. ¿Qué se informa? | `OT-001` informa de esa fila: cada reseña debe registrar al menos uno de los dos campos, `content` o `score`. Solo comprueba que uno de ellos esté relleno; no juzga si el contenido de la reseña es cierto ni si se trata de una reseña maliciosa. |

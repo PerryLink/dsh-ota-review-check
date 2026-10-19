@@ -30,6 +30,34 @@ dsh --profile <name> --dump-config | grep 'dsh-ota-review-check'
 下表是示例集：第一行是详细走查，其余行是简短案例。
 
 
+#### 详细输出
+
+**工具** `ota_review_check`
+
+**输入**
+
+~~~json
+{"hotel":"某某门店","period":"2026 年 3 月","platform":"某某平台","rows":[{"序号":"1","渠道":"某某平台","房型":"标准大床房","入住日期":"2026-03-01","总分":"","评分制":"5 分制","点评内容":"","是否回复":"是"}]}
+~~~
+ 
+**输出**
+
+~~~json
+{
+  "id": "dsh-ota-review-check.OT-001.de09b5a6",
+  "ruleId": "OT-001",
+  "severity": "warn",
+  "locator": {
+    "row": 1,
+    "field": "content"
+  },
+  "found": "第 1 行 content、score 都为空",
+  "expected": "content、score 至少应填写一项"
+}
+~~~
+
+*来源 `dsh-ota-review-check/tests/fixtures/OT-001/OT-001-unsafe.json`*
+
 | 你会问 | 它怎么答 |
 |---|---|
 | 某行「点评内容」与「评分」都没有填，会报出什么？ | `OT-001` 会报出该行：每条点评至少要记录 `content` 与 `score` 中的一项。它只核对是否至少填了一项，不判断点评内容是否属实、是否属于恶意评价。 |
