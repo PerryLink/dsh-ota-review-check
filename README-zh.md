@@ -1,6 +1,6 @@
 # dsh-ota-review-check — 在线点评回复台账核对
 
-## 快速试跑（1 分钟）
+### 快速试跑（1 分钟）
 
 ```bash
 node samples/quickstart/run.mjs --check
