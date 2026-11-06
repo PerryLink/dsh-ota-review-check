@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-ota-review-check-flow-dark.svg">
-  <img src="docs/assets/dsh-ota-review-check-flow-light.svg" width="100%" alt="dsh-ota-review-check प्रवाह: सामग्री (JSON/YAML) → parseMaterial → rules/ota-review-check.yaml (OT-001…OT-007) → ota_review_check → findings / skipped">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-ota-review-check-hero-en-dark.webp">
+  <img src="docs/assets/dsh-ota-review-check-hero-en-light.webp" width="100%" alt="dsh-ota-review-check चित्र: बाईं ओर शीर्षक और दो मूल्य-पंक्तियाँ; दाईं ओर रजिस्टर की पहली पंक्ति सात कॉलमों में — खाली स्कोर और समीक्षा-पाठ वाले खाने चिह्नित हैं और एक OT-001 चेतावनी बनाते हैं, जबकि OT-006 श्रेणी-शब्दावली खाली होने के कारण बिंदुयुक्त skipped पर्ची के रूप में दिखता है; चिप्स वास्तविक परिणाम दोहराते हैं: warn 1, info 0, error 0, skipped 1">
 </picture>
 
 # dsh-ota-review-check
@@ -39,6 +39,11 @@ dsh plugin --profile <name> add dsh-ota-review-check
 `dsh-ota-review-check` ऑनलाइन समीक्षा और उत्तर का एक रजिस्टर पढ़ता है — प्रॉपर्टी हेडर और प्रत्येक समीक्षा की एक पंक्ति — और उसी रजिस्टर की पूर्णता तथा बंद-लूप की जाँच करता है: क्या प्रत्येक समीक्षा में उसका विवरण या स्कोर दर्ज है, क्या उत्तर दी गई समीक्षा में उत्तर की तिथि और उत्तर देने वाले का नाम दर्ज है, क्या उत्तर समीक्षा से पहले नहीं है, क्या बिना उत्तर वाली समीक्षा रजिस्टर में लिखी समय-सीमा के भीतर है, क्या समस्या-प्रकार आपकी संस्था की अपनी शब्दावली से लिया गया है, और क्या समीक्षा क्रमांक अद्वितीय हैं।
 
 यह केवल वे अंतर गिनाता है जिन्हें सामग्री स्वयं पंक्ति-दर-पंक्ति इंगित कर सकती है; हर वह जाँच जो नहीं चल सकी, कारण के साथ `skipped` में दर्ज होती है। नियम-पैक उद्धरण नहीं गढ़ता: हर निष्कर्ष लागू खंड का नाम और यह भी बताता है कि उसका मूल पाठ इस बार प्राप्त नहीं हुआ।
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-ota-review-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-ota-review-check-flow-v5-light.svg" width="100%" alt="संरचना चित्र: सामग्री (JSON/YAML) और 7-नियम पैक एक ही रजिस्टर पंक्ति में आते हैं; केवल वे नौ कॉलम बनाए गए हैं जिन्हें कोई नियम पढ़ता है, और हर नियम उन खानों पर एक माप-रेखा है जिन्हें वह पढ़ता है (content|score, replyStatus→repliedAt, replier, checkIn≤repliedAt, checkIn≤replyDeadline), reviewNo की पंक्ति-पार विशिष्टता ऊर्ध्व कोष्ठक में है और OT-006 values खाली होने के कारण बिंदुयुक्त पथ से अलग होता है; निकास issues[] (पंक्ति/कॉलम स्थान) और skipped[] (प्रति नियम कारण) हैं">
+</picture>
 
 ## तीन चरणों में शुरुआत
 

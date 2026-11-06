@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-ota-review-check-flow-dark.svg">
-  <img src="docs/assets/dsh-ota-review-check-flow-light.svg" width="100%" alt="dsh-ota-review-check pipeline: material (JSON/YAML) → parseMaterial → rules/ota-review-check.yaml (OT-001…OT-007) → ota_review_check → findings / skipped">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-ota-review-check-hero-en-dark.webp">
+  <img src="docs/assets/dsh-ota-review-check-hero-en-light.webp" width="100%" alt="dsh-ota-review-check poster: the title and two value lines on the left; on the right, row 1 of the register drawn as seven columns — the blank score and review-text cells are ringed and become the single OT-001 warning, while OT-006 is drawn as a dashed skipped slip because the category vocabulary ships empty; the chips repeat the real run: warn 1, info 0, error 0, skipped 1">
 </picture>
 
 # dsh-ota-review-check
@@ -39,6 +39,11 @@ dsh plugin --profile <name> add dsh-ota-review-check
 `dsh-ota-review-check` reads one online review-and-reply register — the property header plus one row per review — and checks that register's own completeness and closed loop: that each review records its content or a score, that a replied review carries a reply date and a reply author, that the reply does not precede the review, that an unreplied review falls inside the deadline the register itself states, that the problem category comes from your institution's own vocabulary, and that review numbers are unique.
 
 It lists only the differences the material itself can be held to, line by line; every check that could not run is reported in `skipped` with its reason. The rule pack never fabricates citations: each finding names the clause it rests on and says that the clause text was not obtained in this pass.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-ota-review-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-ota-review-check-flow-v5-light.svg" width="100%" alt="Structure diagram: the material (JSON/YAML) and the 7-rule pack feed one ledger row; only the nine columns a rule reads are drawn, and each rule is a dimension line over the cells it reads (content|score, replyStatus→repliedAt, replier, checkIn≤repliedAt, checkIn≤replyDeadline), with reviewNo's across-row uniqueness on a vertical brace and OT-006 detaching on a dashed path because values is empty; the exits are issues[] (row/column locator) and skipped[] (one reason per rule)">
+</picture>
 
 ## Three-step setup
 

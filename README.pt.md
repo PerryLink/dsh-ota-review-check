@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-ota-review-check-flow-dark.svg">
-  <img src="docs/assets/dsh-ota-review-check-flow-light.svg" width="100%" alt="Fluxo do dsh-ota-review-check: material (JSON/YAML) → parseMaterial → rules/ota-review-check.yaml (OT-001…OT-007) → ota_review_check → findings / skipped">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-ota-review-check-hero-en-dark.webp">
+  <img src="docs/assets/dsh-ota-review-check-hero-en-light.webp" width="100%" alt="Imagem do dsh-ota-review-check: o título e duas linhas de valor à esquerda; à direita, a linha 1 do registo desenhada como sete colunas — as células vazias de pontuação e de texto da avaliação ficam marcadas e geram o único aviso OT-001, enquanto OT-006 aparece como uma nota skipped tracejada porque o vocabulário de categorias vem vazio; as etiquetas repetem a execução real: warn 1, info 0, error 0, skipped 1">
 </picture>
 
 # dsh-ota-review-check
@@ -39,6 +39,11 @@ dsh plugin --profile <name> add dsh-ota-review-check
 `dsh-ota-review-check` lê um registo de avaliações em linha com as respetivas respostas —o cabeçalho do estabelecimento mais uma linha por avaliação— e verifica a completude e o fecho desse próprio registo: se cada avaliação regista o seu conteúdo ou uma pontuação, se uma avaliação respondida traz data de resposta e autor da resposta, se a resposta não é anterior à avaliação, se uma avaliação sem resposta cai dentro do prazo que o próprio registo declara, se o tipo de problema vem do vocabulário da sua instituição e se os números de avaliação são únicos.
 
 Enumera apenas as diferenças que o próprio material permite apontar, linha a linha; cada verificação que não pôde correr declara-se em `skipped` com o motivo. O pacote de regras não inventa citações: cada achado nomeia a cláusula aplicada e avisa que o seu texto não foi obtido nesta passagem.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-ota-review-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-ota-review-check-flow-v5-light.svg" width="100%" alt="Diagrama de estrutura: o material (JSON/YAML) e o pacote de 7 regras alimentam uma única linha do registo; só são desenhadas as nove colunas que alguma regra lê e cada regra é uma linha de cota sobre as células que lê (content|score, replyStatus→repliedAt, replier, checkIn≤repliedAt, checkIn≤replyDeadline), a unicidade de reviewNo entre linhas vai numa chave vertical e OT-006 destaca-se por um caminho tracejado porque values está vazio; as saídas são issues[] (localização linha/coluna) e skipped[] (um motivo por regra)">
+</picture>
 
 ## Instalação em três passos
 

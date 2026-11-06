@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-ota-review-check-flow-dark.svg">
-  <img src="docs/assets/dsh-ota-review-check-flow-light.svg" width="100%" alt="dsh-ota-review-check 流程：材料（JSON/YAML）→ parseMaterial → rules/ota-review-check.yaml（OT-001…OT-007）→ ota_review_check → findings / skipped">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-ota-review-check-hero-zh-dark.webp">
+  <img src="docs/assets/dsh-ota-review-check-hero-zh-light.webp" width="100%" alt="dsh-ota-review-check 配图：左侧是标题与两行价值句；右侧把台账第 1 行画成七栏——总分与点评内容两格空白被圈出，落成 OT-001 · warn 一条发现，OT-006 因分类词表出厂为空画成 skipped 虚线便签；底部统计为 warn 1 · info 0 · error 0 · skipped 1">
 </picture>
 
 # dsh-ota-review-check
@@ -39,6 +39,11 @@ dsh plugin --profile <name> add dsh-ota-review-check
 `dsh-ota-review-check` 读取一份在线点评回复台账——门店表头加每条点评一行——核对这份台账自身的齐备与闭环：每条点评是否记录了内容或评分、已回复的点评是否记录了回复日期与回复人、回复是否早于点评、未回复的点评是否落在台账自己写明的回复期限之内、问题类型是否取自本机构自己的分类口径、点评编号是否唯一。
 
 它只列出材料内部能逐条指认的差异；无法执行的检查会逐项写进 `skipped` 并说明原因。规则库不伪造引文：每条发现都会写明所引条款，以及该条款原文本次未取得。
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-ota-review-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-ota-review-check-flow-v5-light.svg" width="100%" alt="结构图：材料（JSON/YAML）与 7 条规则的规则库汇入同一行台账；一行只画被规则读取的 9 栏，7 条规则各自用标注线指向它读的栏——content｜score、replyStatus→repliedAt、replier、checkIn≤repliedAt、checkIn≤replyDeadline，跨行的 reviewNo 唯一用纵向括线标出，OT-006 因 values 为空沿虚线脱离；两个出口是 issues[]（row/column 定位）与 skipped[]（逐项原因）">
+</picture>
 
 ## 三步上手
 
