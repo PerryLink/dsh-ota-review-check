@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="660" viewBox="0 0 1100 660" role="img" aria-labelledby="flowTitle flowDesc"><title id="flowTitle">dsh-ota-review-check — annotated ledger row</title><desc id="flowDesc">One register row carries the nine canonical columns a rule reads. Each of the seven rules is a dimension line clamped onto the cells its check block names; amber means the severity is capped at warn, blue at info, and the dashed probe marks a rule that cannot run because its vocabulary is empty. Findings leave for issues[] and unrunnable rules for skipped[].</desc><defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#131a2a"/><stop offset="1" stop-color="#0c1016"/></linearGradient></defs><rect width="1100" height="660" rx="20" fill="url(#bg)"/>
+<text x="40.0" y="52.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="26" font-weight="700" fill="#eef2ff" text-anchor="start">One ledger row · seven annotations · two outlets</text>
+<text x="40.0" y="76.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="14" font-weight="400" fill="#929eba" text-anchor="start">Each rule is clamped onto the columns of the same row; a rule that cannot run reports itself in skipped — never a silent pass.</text>
+<text x="1060.0" y="52.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="12.5" font-weight="400" fill="#929eba" text-anchor="end">rules 2026.1 · OT-001..OT-007 · sample 1 row</text>
+<rect x="40.0" y="92.0" width="332.0" height="98.0" rx="16" fill="#171f30" stroke="#2a3550" stroke-width="1.3"/>
+<text x="56.0" y="116.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13.5" font-weight="700" fill="#eef2ff" text-anchor="start">MATERIAL · JSON / YAML</text>
+<line x1="56.0" y1="126.0" x2="356.0" y2="126.0" stroke="#29344f" stroke-width="1.0" stroke-linecap="round"/>
+<text x="56.0" y="140.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12.5" font-weight="400" fill="#b2bdd6" text-anchor="start">header: hotel · period · platform · …</text>
+<text x="56.0" y="158.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12.5" font-weight="400" fill="#b2bdd6" text-anchor="start">rows[] = 1 · 13 canonical column groups</text>
+<text x="56.0" y="176.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12.5" font-weight="400" fill="#929eba" text-anchor="start">read-only · no network · no model call</text>
+<rect x="388.0" y="92.0" width="312.0" height="98.0" rx="16" fill="#171f30" stroke="#2a3550" stroke-width="1.3"/>
+<text x="404.0" y="116.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="13.5" font-weight="700" fill="#eef2ff" text-anchor="start">parseMaterial</text>
+<line x1="404.0" y1="126.0" x2="684.0" y2="126.0" stroke="#29344f" stroke-width="1.0" stroke-linecap="round"/>
+<text x="404.0" y="140.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12.5" font-weight="400" fill="#b2bdd6" text-anchor="start">alias → canonical (13 groups)</text>
+<text x="404.0" y="158.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12.5" font-weight="400" fill="#b2bdd6" text-anchor="start">case / space / _ / - ignored</text>
+<text x="404.0" y="176.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12.5" font-weight="400" fill="#929eba" text-anchor="start">列名保留 → 定位写明读的是哪一栏</text>
+<rect x="716.0" y="92.0" width="344.0" height="98.0" rx="16" fill="#171f30" stroke="#2a3550" stroke-width="1.3"/>
+<text x="732.0" y="116.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="13.5" font-weight="700" fill="#eef2ff" text-anchor="start">rules/ota-review-check.yaml</text>
+<line x1="732.0" y1="126.0" x2="1044.0" y2="126.0" stroke="#29344f" stroke-width="1.0" stroke-linecap="round"/>
+<text x="732.0" y="140.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12.5" font-weight="400" fill="#b2bdd6" text-anchor="start">7 rules · 2026.1 · this run: 6 run, 1 skipped</text>
+<text x="732.0" y="158.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12.5" font-weight="400" fill="#b2bdd6" text-anchor="start">derived → cap warn · config → cap info</text>
+<text x="732.0" y="176.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12.5" font-weight="400" fill="#929eba" text-anchor="start">excerpt 未取得 → 不伪造引文</text>
+<line x1="374.0" y1="141.0" x2="382.4" y2="141.0" stroke="#79859e" stroke-width="1.4" stroke-linecap="round"/><polygon points="386.0,141.0 382.4,143.0 382.4,139.0" fill="#79859e"/>
+<line x1="544.0" y1="190.0" x2="544.0" y2="246.0" stroke="#5b657c" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="888.0" y1="190.0" x2="888.0" y2="246.0" stroke="#5b657c" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="100.0" y1="246.0" x2="888.0" y2="246.0" stroke="#5b657c" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="100.0" y1="246.0" x2="100.0" y2="349.4" stroke="#808ba5" stroke-width="1.5" stroke-linecap="round"/><polygon points="100.0,354.0 97.5,349.4 102.5,349.4" fill="#808ba5"/>
+<line x1="279.1" y1="342.0" x2="279.1" y2="358.0" stroke="#2b3652" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="502.2" y1="342.0" x2="502.2" y2="358.0" stroke="#2b3652" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="279.1" y1="342.0" x2="502.2" y2="342.0" stroke="#e2b34a" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="279.1" y1="337.0" x2="279.1" y2="347.0" stroke="#e2b34a" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="502.2" y1="337.0" x2="502.2" y2="347.0" stroke="#e2b34a" stroke-width="1.6" stroke-linecap="round"/>
+<text x="285.1" y="331.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="13" font-weight="700" fill="#e2b34a" text-anchor="start">OT-001</text>
+<text x="333.1" y="331.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12" font-weight="400" fill="#929eba" text-anchor="start">content | score</text>
+<line x1="502.2" y1="342.0" x2="502.2" y2="358.0" stroke="#2b3652" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="725.3" y1="342.0" x2="725.3" y2="358.0" stroke="#2b3652" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="502.2" y1="342.0" x2="725.3" y2="342.0" stroke="#8496f5" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="502.2" y1="337.0" x2="502.2" y2="347.0" stroke="#8496f5" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="725.3" y1="337.0" x2="725.3" y2="347.0" stroke="#8496f5" stroke-width="1.6" stroke-linecap="round"/>
+<text x="508.2" y="331.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="13" font-weight="700" fill="#8496f5" text-anchor="start">OT-002</text>
+<text x="556.2" y="331.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12" font-weight="400" fill="#929eba" text-anchor="start">replyStatus → repliedAt</text>
+<line x1="836.9" y1="342.0" x2="836.9" y2="358.0" stroke="#2b3652" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="948.4" y1="342.0" x2="948.4" y2="358.0" stroke="#2b3652" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="836.9" y1="342.0" x2="948.4" y2="342.0" stroke="#8496f5" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="836.9" y1="337.0" x2="836.9" y2="347.0" stroke="#8496f5" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="948.4" y1="337.0" x2="948.4" y2="347.0" stroke="#8496f5" stroke-width="1.6" stroke-linecap="round"/>
+<text x="842.9" y="331.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="13" font-weight="700" fill="#8496f5" text-anchor="start">OT-005</text>
+<text x="890.9" y="331.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12" font-weight="400" fill="#929eba" text-anchor="start">replier</text>
+<line x1="167.6" y1="312.0" x2="167.6" y2="358.0" stroke="#2b3652" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="725.3" y1="312.0" x2="725.3" y2="358.0" stroke="#2b3652" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="167.6" y1="312.0" x2="725.3" y2="312.0" stroke="#8496f5" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="167.6" y1="307.0" x2="167.6" y2="317.0" stroke="#8496f5" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="725.3" y1="307.0" x2="725.3" y2="317.0" stroke="#8496f5" stroke-width="1.6" stroke-linecap="round"/>
+<text x="173.6" y="301.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="13" font-weight="700" fill="#8496f5" text-anchor="start">OT-004</text>
+<text x="221.6" y="301.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12" font-weight="400" fill="#929eba" text-anchor="start">checkIn ≤ repliedAt</text>
+<line x1="167.6" y1="282.0" x2="167.6" y2="358.0" stroke="#2b3652" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="836.9" y1="282.0" x2="836.9" y2="358.0" stroke="#2b3652" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="167.6" y1="282.0" x2="836.9" y2="282.0" stroke="#8496f5" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="167.6" y1="277.0" x2="167.6" y2="287.0" stroke="#8496f5" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="836.9" y1="277.0" x2="836.9" y2="287.0" stroke="#8496f5" stroke-width="1.6" stroke-linecap="round"/>
+<text x="173.6" y="271.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="13" font-weight="700" fill="#8496f5" text-anchor="start">OT-003</text>
+<text x="221.6" y="271.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12" font-weight="400" fill="#929eba" text-anchor="start">checkIn ≤ replyDeadline</text>
+<rect x="56.0" y="360.0" width="1004.0" height="80.0" rx="14" fill="#171f30" stroke="#2a3550" stroke-width="1.4"/>
+<rect x="285.1" y="366.0" width="211.1" height="68.0" rx="10" fill="#232832"/>
+<line x1="56.0" y1="368.0" x2="56.0" y2="432.0" stroke="#28334d" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="167.6" y1="368.0" x2="167.6" y2="432.0" stroke="#28334d" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="279.1" y1="368.0" x2="279.1" y2="432.0" stroke="#28334d" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="390.7" y1="368.0" x2="390.7" y2="432.0" stroke="#28334d" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="502.2" y1="368.0" x2="502.2" y2="432.0" stroke="#28334d" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="613.8" y1="368.0" x2="613.8" y2="432.0" stroke="#28334d" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="725.3" y1="368.0" x2="725.3" y2="432.0" stroke="#28334d" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="836.9" y1="368.0" x2="836.9" y2="432.0" stroke="#28334d" stroke-width="1.0" stroke-linecap="round"/>
+<text x="68.0" y="382.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" font-weight="400" fill="#b2bdd6" text-anchor="start">序号</text>
+<text x="68.0" y="402.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="11" font-weight="400" fill="#929eba" text-anchor="start">reviewNo</text>
+<text x="68.0" y="426.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="12.5" font-weight="400" fill="#eef2ff" text-anchor="start">1</text>
+<text x="179.6" y="382.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" font-weight="400" fill="#b2bdd6" text-anchor="start">入住日期</text>
+<text x="179.6" y="402.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="11" font-weight="400" fill="#929eba" text-anchor="start">checkIn</text>
+<text x="179.6" y="426.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="12.5" font-weight="400" fill="#eef2ff" text-anchor="start">2026-03-01</text>
+<text x="291.1" y="382.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" font-weight="400" fill="#b2bdd6" text-anchor="start">总分</text>
+<text x="291.1" y="402.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="11" font-weight="400" fill="#929eba" text-anchor="start">score</text>
+<text x="291.1" y="426.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12.5" font-weight="700" fill="#e2b34a" text-anchor="start">空</text>
+<text x="402.7" y="382.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" font-weight="400" fill="#b2bdd6" text-anchor="start">点评内容</text>
+<text x="402.7" y="402.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="11" font-weight="400" fill="#929eba" text-anchor="start">content</text>
+<text x="402.7" y="426.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12.5" font-weight="700" fill="#e2b34a" text-anchor="start">空</text>
+<text x="514.2" y="382.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" font-weight="400" fill="#b2bdd6" text-anchor="start">是否回复</text>
+<text x="514.2" y="402.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="11" font-weight="400" fill="#929eba" text-anchor="start">replyStatus</text>
+<text x="514.2" y="426.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12.5" font-weight="400" fill="#eef2ff" text-anchor="start">是</text>
+<text x="625.8" y="382.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" font-weight="400" fill="#b2bdd6" text-anchor="start">回复日期</text>
+<text x="625.8" y="402.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="11" font-weight="400" fill="#929eba" text-anchor="start">repliedAt</text>
+<text x="625.8" y="426.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="12.5" font-weight="400" fill="#eef2ff" text-anchor="start">2026-03-02</text>
+<text x="737.3" y="382.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" font-weight="400" fill="#b2bdd6" text-anchor="start">回复期限</text>
+<text x="737.3" y="402.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="11" font-weight="400" fill="#929eba" text-anchor="start">replyDeadline</text>
+<text x="737.3" y="426.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="12.5" font-weight="400" fill="#eef2ff" text-anchor="start">2026-03-04</text>
+<text x="848.9" y="382.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" font-weight="400" fill="#b2bdd6" text-anchor="start">回复人</text>
+<text x="848.9" y="402.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="11" font-weight="400" fill="#929eba" text-anchor="start">replier</text>
+<text x="848.9" y="426.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12.5" font-weight="400" fill="#eef2ff" text-anchor="start">张店长</text>
+<text x="960.4" y="382.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" font-weight="400" fill="#b2bdd6" text-anchor="start">问题类型</text>
+<text x="960.4" y="402.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="11" font-weight="400" fill="#929eba" text-anchor="start">issueType</text>
+<text x="960.4" y="426.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12.5" font-weight="400" fill="#eef2ff" text-anchor="start">噪音</text>
+<rect x="285.1" y="366.0" width="211.1" height="68.0" rx="10" fill="none" stroke="#7c693d" stroke-width="1.3" stroke-dasharray="6 5"/>
+<line x1="46.0" y1="360.0" x2="46.0" y2="496.0" stroke="#e2b34a" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="46.0" y1="360.0" x2="52.0" y2="360.0" stroke="#e2b34a" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="46.0" y1="496.0" x2="52.0" y2="496.0" stroke="#e2b34a" stroke-width="1.6" stroke-linecap="round"/>
+<rect x="56.0" y="448.0" width="111.6" height="48.0" rx="10" fill="#131a2a" stroke="#29344f" stroke-width="1.1" stroke-dasharray="5 4"/>
+<text x="66.0" y="466.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11" font-weight="400" fill="#929eba" text-anchor="start">row 2</text>
+<text x="66.0" y="486.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="12.5" font-weight="400" fill="#929eba" text-anchor="start">1</text>
+<text x="176.0" y="470.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="13" font-weight="700" fill="#e2b34a" text-anchor="start">OT-007</text>
+<text x="224.0" y="470.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12" font-weight="400" fill="#929eba" text-anchor="start">reviewNo unique across rows</text>
+<line x1="948.4" y1="440.0" x2="948.4" y2="456.0" stroke="#2b3652" stroke-width="1.1" stroke-linecap="round" stroke-dasharray="5 4"/>
+<line x1="1060.0" y1="440.0" x2="1060.0" y2="456.0" stroke="#2b3652" stroke-width="1.1" stroke-linecap="round" stroke-dasharray="5 4"/>
+<line x1="948.4" y1="456.0" x2="1060.0" y2="456.0" stroke="#79859e" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 4"/>
+<line x1="948.4" y1="451.0" x2="948.4" y2="461.0" stroke="#79859e" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 4"/>
+<line x1="1060.0" y1="451.0" x2="1060.0" y2="461.0" stroke="#79859e" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 4"/>
+<text x="769.4" y="474.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="13" font-weight="700" fill="#8c98b3" text-anchor="start">OT-006</text>
+<text x="817.4" y="474.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12" font-weight="400" fill="#929eba" text-anchor="start">issueType in values[]</text>
+<line x1="445.0" y1="446.0" x2="445.0" y2="507.0" stroke="#8691ac" stroke-width="1.7" stroke-linecap="round"/><polygon points="445.0,512.0 442.2,507.0 447.8,507.0" fill="#8691ac"/>
+<line x1="1004.2" y1="456.0" x2="1004.2" y2="507.6" stroke="#79859e" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="5 4"/><polygon points="1004.2,512.0 1001.8,507.6 1006.6,507.6" fill="#79859e"/>
+<rect x="40.0" y="516.0" width="620.0" height="100.0" rx="16" fill="#171f30" stroke="#2a3550" stroke-width="1.3"/>
+<text x="56.0" y="540.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13.5" font-weight="700" fill="#eef2ff" text-anchor="start">issues[] · each finding is locatable</text>
+<line x1="56.0" y1="550.0" x2="644.0" y2="550.0" stroke="#29344f" stroke-width="1.0" stroke-linecap="round"/>
+<text x="56.0" y="568.0" font-family="Consolas,'Cascadia Mono','SFMono-Regular',ui-monospace,monospace" font-size="12.5" font-weight="400" fill="#e2b34a" text-anchor="start">{ row: 1, column: content } · OT-001 · warn</text>
+<text x="56.0" y="588.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" font-weight="400" fill="#b2bdd6" text-anchor="start">found · expected · basis · fix — never a verdict</text>
+<text x="56.0" y="608.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" font-weight="400" fill="#929eba" text-anchor="start">id = plugin + rule + locator hash → allow-list key</text>
+<rect x="680.0" y="516.0" width="380.0" height="100.0" rx="16" fill="#171f30" stroke="#2a3550" stroke-width="1.3"/>
+<text x="696.0" y="540.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13.5" font-weight="700" fill="#eef2ff" text-anchor="start">skipped[] · never a silent pass</text>
+<line x1="696.0" y1="550.0" x2="1044.0" y2="550.0" stroke="#29344f" stroke-width="1.0" stroke-linecap="round"/>
+<text x="696.0" y="568.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12.5" font-weight="400" fill="#b49ef6" text-anchor="start">values = [] → cannot run, reason kept</text>
+<text x="696.0" y="588.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" font-weight="400" fill="#b2bdd6" text-anchor="start">OT-002 no matching row · OT-003 no deadline</text>
+<text x="696.0" y="608.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" font-weight="400" fill="#929eba" text-anchor="start">an empty list never means nothing is wrong</text>
+<text x="40.0" y="636.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12" font-weight="400" fill="#929eba" text-anchor="start">amber = severity capped at warn (derived-from-principle) · blue = capped at info (institutional-configuration)</text>
+<text x="40.0" y="652.0" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12" font-weight="400" fill="#707c98" text-anchor="start">dashed = declared but not runnable today (values: []) · no network, no model call · the report carries the disclaimer</text>
+</svg>
