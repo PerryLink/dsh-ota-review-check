@@ -45,6 +45,11 @@ Solo enumera las diferencias que el propio material permite señalar, línea por
   <img src="docs/assets/dsh-ota-review-check-flow-v5-light.svg" width="100%" alt="Diagrama de estructura: el material (JSON/YAML) y el paquete de 7 reglas alimentan una sola fila del registro; solo se dibujan las nueve columnas que alguna regla lee y cada regla es una línea de cota sobre las celdas que lee (content|score, replyStatus→repliedAt, replier, checkIn≤repliedAt, checkIn≤replyDeadline), la unicidad de reviewNo entre filas va en una llave vertical y OT-006 se separa por una ruta discontinua porque values está vacío; las salidas son issues[] (ubicación fila/columna) y skipped[] (un motivo por regla)">
 </picture>
 
+![dsh-ota-review-check: ejecución real de terminal](docs/assets/dsh-ota-review-check-demo.gif)
+
+*Repetición animada de una ejecución real registrada en este repositorio.*
+
+
 ## Instalación en tres pasos
 
 1. **Instalar** (requiere DSH `>=0.2.1-0 <0.3.0` y Node `^22.19.0 || >=24.0.0`):

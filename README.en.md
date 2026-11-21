@@ -97,6 +97,10 @@ The plugin registers one tool, `ota_review_check`: it reads a review-and-reply r
 
 ### Examples
 
+![dsh-ota-review-check: real terminal run](docs/assets/dsh-ota-review-check-demo.gif)
+
+*Animated replay of a real run recorded in this repository.*
+
 These are the plugin's real output over its own `OT-001` test fixture, not an illustration.
 
 #### Detailed output

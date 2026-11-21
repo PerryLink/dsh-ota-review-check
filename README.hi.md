@@ -45,6 +45,11 @@ dsh plugin --profile <name> add dsh-ota-review-check
   <img src="docs/assets/dsh-ota-review-check-flow-v5-light.svg" width="100%" alt="संरचना चित्र: सामग्री (JSON/YAML) और 7-नियम पैक एक ही रजिस्टर पंक्ति में आते हैं; केवल वे नौ कॉलम बनाए गए हैं जिन्हें कोई नियम पढ़ता है, और हर नियम उन खानों पर एक माप-रेखा है जिन्हें वह पढ़ता है (content|score, replyStatus→repliedAt, replier, checkIn≤repliedAt, checkIn≤replyDeadline), reviewNo की पंक्ति-पार विशिष्टता ऊर्ध्व कोष्ठक में है और OT-006 values खाली होने के कारण बिंदुयुक्त पथ से अलग होता है; निकास issues[] (पंक्ति/कॉलम स्थान) और skipped[] (प्रति नियम कारण) हैं">
 </picture>
 
+![dsh-ota-review-check का असली टर्मिनल रन](docs/assets/dsh-ota-review-check-demo.gif)
+
+*इस रिपॉज़िटरी में दर्ज असली रन का एनिमेटेड रीप्ले।*
+
+
 ## तीन चरणों में शुरुआत
 
 1. **इंस्टॉल** (DSH `>=0.2.1-0 <0.3.0` और Node `^22.19.0 || >=24.0.0` चाहिए):
