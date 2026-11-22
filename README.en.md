@@ -7,6 +7,8 @@
 
 # dsh-ota-review-check
 
+Current version `0.2.15`.
+
 **Check an online review-and-reply register line by line — which row, which column, what is missing.**
 
 A DeepSeek Harness checker for hotel and store operations and support: hand it one review-and-reply register (property header plus one row per review) and get back a list of differences you can point at line by line; it never modifies the original, never goes online, never calls a model, and never issues a compliance verdict.
