@@ -11,6 +11,8 @@
 
 Verificador do DeepSeek Harness para operações de hotel e loja e para apoio ao cliente: entregue um registo de avaliações e respostas (cabeçalho do estabelecimento mais uma linha por avaliação) e receba uma lista de diferenças apontáveis linha a linha; não altera o original, não vai à rede, não chama um modelo e não emite um veredicto de conformidade.
 
+Última verificação: DeepSeek Harness `dsh-v0.2.3-alpha.1` (2026-11-22).
+
 [Instalar](#instalação-em-três-passos) · [Configuração](#configuração) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-3366CC?style=flat-square&labelColor=2B3245)](LICENSE)
@@ -48,7 +50,6 @@ Enumera apenas as diferenças que o próprio material permite apontar, linha a l
 ![dsh-ota-review-check: execução real de terminal](docs/assets/dsh-ota-review-check-demo.gif)
 
 *Repetição animada de uma execução real registrada neste repositório.*
-
 
 ## Instalação em três passos
 

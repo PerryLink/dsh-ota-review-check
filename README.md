@@ -11,6 +11,8 @@
 
 面向酒店与门店运营、客服的 DeepSeek Harness 核查插件：交一份点评回复台账（门店表头 + 每条点评一行），拿回一份可逐条指认的差异清单；不改原件、不联网、不调用模型，也不下合规结论。
 
+最近一次核验：DeepSeek Harness `dsh-v0.2.3-alpha.1`（2026-11-22）。
+
 [安装](#三步上手) · [配置](#配置) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-3366CC?style=flat-square&labelColor=2B3245)](LICENSE)
